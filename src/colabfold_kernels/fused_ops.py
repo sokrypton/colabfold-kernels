@@ -65,8 +65,8 @@ def fp8_attention(global_config, key_dim):
 def _mgpu_attn():
   """mgpu_attn on sm_12x, None elsewhere or when this jax's Mosaic GPU API does not match.
 
-  A failure on sm_12x is logged, because the Triton fallback is otherwise silent - with the jax ColabFold 1.6.3
-  resolves (0.10.2) it is what an RTX PRO 6000 runs.
+  A failure on sm_12x is logged, because the Triton fallback is otherwise silent - on Python 3.11, where ColabFold 1.6.3
+  resolves jax 0.10.2 (jax 0.11 wants Python 3.12), it is what an RTX PRO 6000 runs.
   """
   from colabfold_kernels.device import compute_capability
   cc = compute_capability()
